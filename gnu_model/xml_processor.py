@@ -15,8 +15,7 @@ from gnu_model.account import Account
 from gnu_model.model import GnuObjectModel
 from gnu_model.name_spaces import GnuNameSpaces
 
-from gnu_cash.file.account_solver import GnuAccountsSolver
-from app_logger.output_console import APP_TEXT_LOGGER
+from file.account_solver import GnuAccountsSolver
 
 
 class GnuCashXmlProcessor:
@@ -36,11 +35,9 @@ class GnuCashXmlProcessor:
         removed = self.remove_book_components__2(self.gnu_model, **kwargs)
         if removed:
             self.gnu_model.model2zip(new_gnucash_file)
-            APP_TEXT_LOGGER.log(f'nowy {new_gnucash_file}')
             return new_gnucash_file
 
         else:
-            APP_TEXT_LOGGER.log('żadne rekordy nie zostały usunięte')
             return None
 
     def xml_file_name(self, gnu_file: Path) -> Path:

@@ -2,8 +2,8 @@
 __author__ = 'Piotr.Malczak@gpm-sys.com'
 from xml.etree.cElementTree import Element
 from gnu_model.transaction import Transaction
-from gnu_cash.file.account_solver import GnuAccountsSolver
-from gnu_cash.guid import new_guid, new_guid5
+from file.account_solver import GnuAccountsSolver
+from guid import new_guid, new_guid5
 
 
 def create_transaction(gnucash_file, descriptor):

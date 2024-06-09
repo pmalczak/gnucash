@@ -5,8 +5,8 @@ import os
 from pathlib import Path
 from xml.sax import parse
 
-from gnucash.file.gnu2xml_worker import GnuZip2XmlWorker
-from gnucash.file.xml_extractor import MyHandler
+from file.gnu2xml_worker import GnuZip2XmlWorker
+from file.xml_extractor import MyHandler
 
 
 class GnuAccountsSolverGeneric:

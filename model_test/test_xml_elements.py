@@ -1,9 +1,7 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+__author__ = 'Piotr.Malczak@gpm-sys.com'
 import unittest
 from xml.etree.ElementTree import Element, tostring
-
-__author__ = 'Piotr.Malczak@gpm-sys.com'
 
 
 class XmlElementsTester(unittest.TestCase):

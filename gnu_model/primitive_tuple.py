@@ -1,11 +1,9 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 __author__ = 'Piotr.Malczak@gpm-sys.com'
 
 from gnu_model.xml_element import XmlElement, extract_name_space
-from gnu_cash.model import primitive_pair as pair
-from gnu_cash.model import primitive_composite as composite
+from gnu_model import primitive_pair as pair
+from gnu_model import primitive_composite as composite
 
 
 class Splits(XmlElement):
