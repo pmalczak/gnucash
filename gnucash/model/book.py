@@ -1,12 +1,10 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+__author__ = 'Piotr.Malczak@gpm-sys.com'
 
 from xml.etree.ElementTree import Element
-from gnu_model.xml_element import XmlElement, extract_name_space
-from gnu_model.transaction import Transaction
-from gnu_model.account import Account
-
-__author__ = 'Piotr.Malczak@gpm-sys.com'
+from gnucash.model.xml_element import XmlElement, extract_name_space
+from gnucash.model.transaction import Transaction
+from gnucash.model.account import Account
 
 
 class Book(XmlElement):

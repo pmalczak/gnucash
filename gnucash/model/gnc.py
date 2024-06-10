@@ -1,10 +1,8 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from gnu_model import primitive_simple as simple
-from gnu_model.book import Book
-from gnu_model.xml_element import XmlElement, extract_name_space
-
 __author__ = 'Piotr.Malczak@gpm-sys.com'
+from gnucash.model import primitive_simple as simple
+from gnucash.model.book import Book
+from gnucash.model.xml_element import XmlElement, extract_name_space
 
 
 class GncV2(XmlElement):

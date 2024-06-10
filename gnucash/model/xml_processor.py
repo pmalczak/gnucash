@@ -10,12 +10,12 @@ from pathlib import Path
 
 from xml.etree.cElementTree import ElementTree
 
-from gnu_model.transaction import Transaction
-from gnu_model.account import Account
-from gnu_model.model import GnuObjectModel
-from gnu_model.name_spaces import GnuNameSpaces
+from gnucash.model.transaction import Transaction
+from gnucash.model.account import Account
+from gnucash.model.model import GnuObjectModel
+from gnucash.model.name_spaces import GnuNameSpaces
 
-from file.account_solver import GnuAccountsSolver
+from gnucash.file.account_solver import GnuAccountsSolver
 
 
 class GnuCashXmlProcessor:

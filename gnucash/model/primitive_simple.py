@@ -1,9 +1,6 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 __author__ = 'Piotr.Malczak@gpm-sys.com'
-
-from gnu_model.xml_element import XmlElement
+from gnucash.model.xml_element import XmlElement
 
 
 class TrnId(XmlElement):

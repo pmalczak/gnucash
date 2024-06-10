@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 __author__ = 'Piotr.Malczak@gpm-sys.com'
-
 import unittest
 from pathlib import Path
 
-from extract_gnu_transactions import extract_gnu_transactions_to_list
+from gnucash.extract_gnu_transactions import extract_gnu_transactions_to_list
 
 
 class Tester(unittest.TestCase):

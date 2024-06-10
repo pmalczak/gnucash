@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 __author__ = 'Piotr.Malczak@gpm-sys.com'
-import os
 import unittest
 from pathlib import Path
 
-from gnu_model.transaction import Transaction
-from gnu_model.transaction_descriptor import TransactionDescriptor, create_transaction
-from file.account_solver import GnuAccountsSolver, AccountDoesNotExist
+from gnucash.model.transaction import Transaction
+from gnucash.model.transaction_descriptor import TransactionDescriptor, create_transaction
+from gnucash.file.account_solver import GnuAccountsSolver, AccountDoesNotExist
 
 
 def _get_simplified_transaction_descriptor():
@@ -37,19 +36,18 @@ class TransactionGeneratorTester(unittest.TestCase):
         self.assertTrue(isinstance(result, str))
 
     def test_generate_transaction(self):
-        input_name = Path('SALE-20190124-2221.gnucash')
-        input_file = Path().resolve() / input_name
+        p = Path(__file__).parent
+        input_file = p / 'GPM-20190126-2221.gnucash'
         descriptor = _get_simplified_transaction_descriptor()
         transaction = create_transaction(input_file, descriptor)
         self.assertTrue(isinstance(transaction, Transaction))
 
     def test_generate_transaction_lacking_acc(self):
-        input_name = Path('TST.gnucash')
+        p = Path(__file__).parent
+        input_file = p / 'TST.gnucash'
         expected_raised_exception = True
 
-        input_file = Path().resolve() / input_name
-
-        assert os.path.isfile(input_file)
+        assert input_file.is_file()
 
         try:
             account_solver = GnuAccountsSolver(gnucash_file=input_file)

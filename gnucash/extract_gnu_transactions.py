@@ -6,12 +6,12 @@ import os
 from pathlib import Path
 from xml.sax import parse
 
-from file.xml_extractor import MyHandler
-from data_model import GNU_FIELD_MEMO, GNU_FIELD_ACCOUNT_NAME, GNU_FIELD_ACC_TYPE, GNU_FIELD_DATE
-from data_model import GNU_FIELD_DESCRIPTION, GNU_FIELD_NUM, GNU_FIELD_RECONCILED_STATE
-from data_model import GNU_FIELD_TRANSACION_CURRENCY, GNU_FIELD_ACCOUNT_CURRENCY
-from data_model import GNU_FIELD_TRN_ID, GNU_FIELD_VALUE, GNU_FIELD_ATTRIBUTES_CONTAINER
-from data_model import gnu_extracted_columns
+from gnucash.file.xml_extractor import MyHandler
+from gnucash.data_model import GNU_FIELD_MEMO, GNU_FIELD_ACCOUNT_NAME, GNU_FIELD_ACC_TYPE, GNU_FIELD_DATE
+from gnucash.data_model import GNU_FIELD_DESCRIPTION, GNU_FIELD_NUM, GNU_FIELD_RECONCILED_STATE
+from gnucash.data_model import GNU_FIELD_TRANSACION_CURRENCY, GNU_FIELD_ACCOUNT_CURRENCY
+from gnucash.data_model import GNU_FIELD_TRN_ID, GNU_FIELD_VALUE, GNU_FIELD_ATTRIBUTES_CONTAINER
+from gnucash.data_model import gnu_extracted_columns
 
 
 def extract_gnu_transactions(xml_file_name: Path, save_unused_tags: bool = False) -> list:

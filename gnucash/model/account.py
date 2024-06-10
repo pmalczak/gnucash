@@ -1,11 +1,8 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
-from gnu_model import primitive_simple as simple, primitive_tuple as tuple_elem
-from gnu_model.primitive_composite import Commodity
-from gnu_model.xml_element import XmlElement, extract_name_space
-
 __author__ = 'Piotr.Malczak@gpm-sys.com'
+from gnucash.model import primitive_simple as simple, primitive_tuple as tuple_elem
+from gnucash.model.primitive_composite import Commodity
+from gnucash.model.xml_element import XmlElement, extract_name_space
 
 
 class Account(XmlElement):

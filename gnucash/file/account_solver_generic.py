@@ -5,8 +5,8 @@ import os
 from pathlib import Path
 from xml.sax import parse
 
-from file.gnu2xml_worker import GnuZip2XmlWorker
-from file.xml_extractor import MyHandler
+from gnucash.file.gnu2xml_worker import GnuZip2XmlWorker
+from gnucash.file.xml_extractor import MyHandler
 
 
 class GnuAccountsSolverGeneric:
@@ -33,8 +33,7 @@ class GnuAccountsSolverGeneric:
 
         if _gnu_file_name:
             if not os.path.isfile(_gnu_file_name):
-                print(str(_gnu_file_name))
-                raise FileExistsError
+                raise FileExistsError(_gnu_file_name)
 
             gnu_zip_worker = GnuZip2XmlWorker(_gnu_file_name)
             xml_file_name = ''

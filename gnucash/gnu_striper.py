@@ -1,15 +1,12 @@
 # -*- coding: utf-8 -*-
 __author__ = 'Piotr.Malczak@gpm-sys.com'
-
 from pathlib import Path
 
-from gnu_model.xml_processor import GnuCashXmlProcessor
-from gnu_cash.gnu_file_operations import GnuFileOperations
-from gnu_cash.gnu_file_locks import GnuFileLocks
-from app_logger.output_console import APP_TEXT_LOGGER
-
-from gnu_model.account import Account
-from gnu_model.transaction import Transaction
+from .model.xml_processor import GnuCashXmlProcessor
+from .model.account import Account
+from .model.transaction import Transaction
+from .gnu_file_operations import copy_to_backup, remove_backup_directory_if_empty
+from .gnu_file_locks import GnuFileLocks
 
 
 def is_item_in_account_name(item, account):
@@ -63,20 +60,19 @@ def strip_transactions(gnucash_file_p, selector, _excluded: set, new_file_name_p
                                        **kwargs
                                        )
     if processed:
-        GnuFileOperations(gnucash_file_p).copy_to_backup()
+        copy_to_backup()
 
-        APP_TEXT_LOGGER.log(str(gnucash_file_p))
-        APP_TEXT_LOGGER.log('account name            transactions   assignments')
+        # APP_TEXT_LOGGER.log(str(gnucash_file_p))
+        # APP_TEXT_LOGGER.log('account name            transactions   assignments')
         for k, v in excluded.items():
             s = '{:<20}           {:>5}         {:>5}'.format(k, v['transactions'], v['assignments'])
-            APP_TEXT_LOGGER.log(s)
+            # APP_TEXT_LOGGER.log(s)
     return
 
 
 def remove_pd_transactions(gnucash_file: Path, file_name_procedure, **kwargs) -> Path:
     lock = GnuFileLocks(gnucash_file)
     lock.obtain_lock()
-    operations = GnuFileOperations(gnucash_file)
 
     try:
         gnucash_file_out = file_name_procedure(gnucash_file, **kwargs)
@@ -85,6 +81,6 @@ def remove_pd_transactions(gnucash_file: Path, file_name_procedure, **kwargs) ->
 
     finally:
         lock.release_lock()
-        operations.remove_backup_directory_if_empty()
+        remove_backup_directory_if_empty(gnucash_file)
 
     return new_gnucash_file

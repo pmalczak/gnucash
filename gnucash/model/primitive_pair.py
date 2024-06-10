@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 __author__ = 'Piotr.Malczak@gpm-sys.com'
-from gnu_model import primitive_simple as simple
-from gnu_model.xml_element import XmlElement, extract_name_space
+from gnucash.model import primitive_simple as simple
+from gnucash.model.xml_element import XmlElement, extract_name_space
 
 
 class AccountSlot(XmlElement):
