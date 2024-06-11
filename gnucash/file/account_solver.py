@@ -28,3 +28,9 @@ class GnuAccountsSolver(GnuAccountsSolverGeneric):
             parent_id = target_acc.id
 
         return target_acc.id
+
+    def iban_as_account_name(self, iban: str):
+        if iban not in self.iban_mappings:
+            raise AccountDoesNotExist(iban)
+        result = self.iban_mappings[iban]
+        return result

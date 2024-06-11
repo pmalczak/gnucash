@@ -10,12 +10,13 @@ from gnucash.file.xml_extractor import MyHandler
 
 
 class GnuAccountsSolverGeneric:
-    def __init__(self, gnucash_file: Path = None, xml_file_name: Path = None):
+    def __init__(self, gnucash_file: Path = None, xml_file_name: Path = None, iban_mappings=None):
         assert bool(gnucash_file) != bool(xml_file_name)  # logical xor
 
         self.file_name = gnucash_file if gnucash_file else \
             (str(xml_file_name) if xml_file_name else '')
 
+        self.iban_mappings = iban_mappings
         self.xml_handler = MyHandler()
         self.accs_by_id = None
         self.accs_by_name_parent = None
@@ -29,8 +30,6 @@ class GnuAccountsSolverGeneric:
         return
 
     def _init(self, _gnu_file_name: Path, xml_file_name: Path):
-        # self.xml_handler = MyHandler()
-
         if _gnu_file_name:
             if not os.path.isfile(_gnu_file_name):
                 raise FileExistsError(_gnu_file_name)
@@ -107,15 +106,6 @@ class GnuAccountsSolverGeneric:
         for k, v in dict_by_id.items():
             result[k] = v['name']
         return result
-
-    # def _reverse(self, dict_by_id):
-    #     assert isinstance(dict_by_id, dict)
-    #     result = {}
-    #     for k, v in dict_by_id.items():
-    #         _r = {'id': k,
-    #               'parent': v['parent']}
-    #         result[v['name']] = _r
-    #     return result
 
     def _find_root_id(self):
         for acc_id, acc in self.xml_handler.accounts.items():
